@@ -1,0 +1,19 @@
+#Creacion de la base de datos y las colecciones, asi como los documentos 
+
+
+from pymongo import MongoClient
+
+MONGO_URI = 'mongodb://localhost'
+
+client = MongoClient(MONGO_URI)
+
+db = client['dron']
+collection = db['GIROSCOPIO']
+collection2 = db['ACELEROMETRO']
+collection3 = db['CONSUMO']
+
+collection.insert_one({"Y":0,"X":0,"Z":0})
+collection2.insert_one({"Aceleracion en m/s^2":0})
+dato1 = {"Bateria": 0}
+dato2 = {"Tiempo en vuelo": 0}
+collection3.insert_many([dato1,dato2])
